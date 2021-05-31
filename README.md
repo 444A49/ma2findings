@@ -34,7 +34,7 @@ FCC mode can be forced in the AC via the RC. The process is a bit more convolute
 
 1) Connect the RC to a computer/phone/anything that can run `comm_serialtalk.py`.
 2) Let the RC and AC connect to each other
-3) Run the following command: `TODO`
+3) Run the following command: `./comm_serialtalk.py /dev/ttyACM0 --sender_type 2 --sender_index 0 --receiver_type 9 --receiver_index 0 --encrypt_type 0 --ack_type 2 --pack_type 0 --cmd_set 9 --cmd_id 39 --payload_hex 00024800FFFF0200000000`
 4) On the FlyApp, open the transmission tab and verify that the string `1km` is above the grey line.
 
 ### Parameters
