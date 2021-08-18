@@ -28,15 +28,6 @@ There's a certain window of time during boot up where you can issue this command
 
 I don't know why, but the MA2 doesn't accept commands as soon as serial mode is enabled. I added a 10 second delay on all my scripts to give it enough time to finalize the boot process.
 
-### FCC mode
-
-FCC mode can be forced in the AC via the RC. The process is a bit more convoluted than usual and it's not permanent, so you'll need to do it on every flight. Follow these steps:
-
-1) Connect the RC to a computer/phone/anything that can run `comm_serialtalk.py`.
-2) Let the RC and AC connect to each other
-3) Run the following command: `./comm_serialtalk.py /dev/ttyACM0 --sender_type 2 --sender_index 0 --receiver_type 9 --receiver_index 0 --encrypt_type 0 --ack_type 2 --pack_type 0 --cmd_set 9 --cmd_id 39 --payload_hex 00024800FFFF0200000000`
-4) On the FlyApp, open the transmission tab and verify that the string `1km` is above the grey line.
-
 ### Parameters
 
 To set a param, issue the following command:
@@ -98,3 +89,14 @@ You can disable the christmas LED lights on the arms with the parameter `forearm
 Parameter name has a pipe on it so you need to issue it withe `--alt` flag.
 
 `./comm_og_service_tool.py /dev/ttyACM0 WM231 FlycParam set --alt forearm_led_ctrl\|g_config.misc_cfg.forearm_lamp_ctrl 0`
+
+## RC
+
+### FCC mode
+
+FCC mode can be forced in the AC via the RC. The process is a bit more convoluted than usual and it's not permanent, so you'll need to do it on every flight. Follow these steps:
+
+1) Connect the RC to a computer/phone/anything that can run `comm_serialtalk.py`.
+2) Let the RC and AC connect to each other
+3) Run the following command: `./comm_serialtalk.py /dev/ttyACM0 --sender_type 2 --sender_index 0 --receiver_type 9 --receiver_index 0 --encrypt_type 0 --ack_type 2 --pack_type 0 --cmd_set 9 --cmd_id 39 --payload_hex 00024800FFFF0200000000`
+4) On the FlyApp, open the transmission tab and verify that the string `1km` is above the grey line.
