@@ -90,6 +90,8 @@ Parameter name has a pipe on it so you need to issue it withe `--alt` flag.
 
 `./comm_og_service_tool.py /dev/ttyACM0 WM231 FlycParam set --alt forearm_led_ctrl\|g_config.misc_cfg.forearm_lamp_ctrl 0`
 
+Credit to StanLee, M4xw, and LazyPilot on dji-rev channel.
+
 ## RC
 
 ### FCC mode
