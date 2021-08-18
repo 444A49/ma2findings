@@ -73,10 +73,28 @@ This has the side effect of not showing up the selected mode in the Fly app. If 
 Then tweak the following parameters:
 
 `mode_gentle_cfg_vert_vel_up_0 6`
+
 `mode_gentle_cfg_vert_vel_down_0 -8`
+
 `vert_vel_down_adding_max_0 -10`
+
 `mode_gentle_cfg_rc_scale_0 0.95`
+
 `mode_gentle_cfg_tilt_atti_range_0 35`
+
 `mode_gentle_cfg_tors_gyro_range_0 100`
 
 This will give you more or less the same speed performance as Sport mode, but with faster descent speeds. Pulling down just the left stick will get you -30km/h.
+
+#### Disable leds
+
+You can disable the christmas LED lights on the arms with the parameter `forearm_led_ctrl|g_config.misc_cfg.forearm_lamp_ctrl`. It's a bitmask. Right most digit controls the front leds, 3rd digit from the right the back leds. Which means:
+
+* 5 = Both LEDs on
+* 4 = Only back LEDs on
+* 1 = Only front LEDs on
+* 0 = All LEDs off
+
+Parameter name has a pipe on it so you need to issue it withe `--alt` flag.
+
+`./comm_og_service_tool.py /dev/ttyACM0 WM231 FlycParam set --alt forearm_led_ctrl\|g_config.misc_cfg.forearm_lamp_ctrl 0`
