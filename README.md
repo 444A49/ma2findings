@@ -92,6 +92,18 @@ Parameter name has a pipe on it so you need to issue it withe `--alt` flag.
 
 Credit to StanLee, M4xw, and LazyPilot on dji-rev channel.
 
+#### Disable logging
+
+AC records all trips and exposes them via DJI Assistant. If you connect Assistant to the AC, in the `flight logs` section you'll see all your previous flights. Assistant offers no way to delete them and **they remain in the AC forever** (or until it collects 100 flights, records are deleted in a FILO fashion).
+
+You can force the AC to delete them every time it boots up, but **you'll need root for this**. Buy a license in drone-hacks.
+
+On `system/bin` there's a file called `set_log_clean_flag.sh`. This is a simple shell file that will save whatever arguments you pass to it into `data/dji/cfg/clean_log_en`. You can simply call this file in the start up script (`start_dji_system.sh`) like this: `/system/bin/set_log_clean_flag.sh blackbox`.
+
+On every startup, the drone will delete all logs. You can verify this by connecting the drone to Assistant and selecting `flight logs`. You should see no entries. If you reload logs after a minute or two you'll see one: **the current "flight"**.
+
+There's only one call across all the AC's binaries to this file: in `dji_sec`. You can verify this by running `strings` on `dji_sec`. It passes the parameter "blackbox".
+
 ## RC
 
 ### FCC mode
